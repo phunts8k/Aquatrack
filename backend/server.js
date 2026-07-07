@@ -17,11 +17,15 @@ connectDB();
 
 const app = express();
 
+// Trust Render's proxy (fixes express-rate-limit warning)
+app.set('trust proxy', 1);
+
 app.use(
   helmet({
     contentSecurityPolicy: false, // disabled to keep the vanilla-JS frontend simple to serve
   })
 );
+
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -54,6 +58,7 @@ app.use('/api', notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`AquaTrack server running on port ${PORT}`);
 });
