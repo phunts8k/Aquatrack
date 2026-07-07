@@ -1,6 +1,6 @@
 import { getToken } from './storage.js';
 
-const BASE_URL = '/api';
+const BASE_URL = 'https://aquatrack-backend-u0cl.onrender.com/api';
 
 /**
  * Thin wrapper around fetch that injects the JSON content type, the
