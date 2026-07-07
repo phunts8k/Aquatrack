@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History &mdash; AquaTrack</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/pages/history.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="app-shell">
+    <header class="navbar" id="navbar"></header>
+
+    <main class="app-shell__content">
+      <div class="dashboard-header">
+        <div>
+          <h1>Usage history</h1>
+          <p>Search, filter, and manage every logged entry.</p>
+        </div>
+        <button class="btn btn-primary" id="add-usage-btn">+ Add usage</button>
+      </div>
+
+      <div class="history-toolbar">
+        <input type="text" id="search-input" class="history-toolbar__search" placeholder="Search by location or note..." />
+        <select id="sort-select">
+          <option value="date_desc">Newest first</option>
+          <option value="date_asc">Oldest first</option>
+          <option value="liters_desc">Highest liters</option>
+          <option value="liters_asc">Lowest liters</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Liters</th>
+              <th>Location</th>
+              <th>Note</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+
+  <div class="modal-overlay hidden" id="usage-modal-overlay">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 id="modal-title">Add usage entry</h3>
+        <button class="icon-btn" id="modal-close-btn" aria-label="Close">✕</button>
+      </div>
+      <form id="usage-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="usage-liters">Liters used</label>
+          <input type="number" min="0" step="0.1" id="usage-liters" placeholder="e.g. 45" />
+          <div class="form-error" id="usage-liters-error"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="usage-date">Date</label>
+          <input type="date" id="usage-date" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="usage-location">Location (optional)</label>
+          <input type="text" id="usage-location" placeholder="e.g. Kitchen" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="usage-note">Note (optional)</label>
+          <input type="text" id="usage-note" placeholder="e.g. Filled the tank" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save entry</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/pages/history.js"></script>
+</body>
+</html>

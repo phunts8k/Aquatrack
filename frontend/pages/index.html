@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaTrack &mdash; Smart Water Management Dashboard</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/pages/landing.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="landing-nav">
+      <div style="font-weight:700; font-size:1.15rem;">💧 Aqua<span style="color:var(--color-primary);">Track</span></div>
+      <nav class="landing-nav__links">
+        <a href="#features">Features</a>
+        <a href="/login.html">Login</a>
+        <a href="/register.html" class="btn btn-primary btn-sm">Get started</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="hero__badge">Built for smarter water conservation</span>
+      <h1>Understand your water usage before it becomes a problem.</h1>
+      <p>Track daily consumption, spot unusual spikes, and get simple tips to save water &mdash; all in one clean dashboard.</p>
+      <div class="hero__actions">
+        <button class="btn btn-primary" data-cta>Get started free</button>
+        <a href="#features" class="btn btn-secondary">See features</a>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <h2 class="text-center">Everything you need to manage water usage</h2>
+      <div class="features__grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">📊</div>
+          <h3>Live dashboard</h3>
+          <p>See today's, this week's, and this month's usage at a glance, alongside your peak and average consumption.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📈</div>
+          <h3>Usage trends</h3>
+          <p>Visualize consumption over time with clean, readable charts that highlight patterns and spikes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">✅</div>
+          <h3>Full history &amp; logs</h3>
+          <p>Add, edit, search, filter, and sort every water usage entry you record, organized by date and location.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💡</div>
+          <h3>Saving tips</h3>
+          <p>Get practical, rotating water-saving tips based on everyday habits that make a real difference.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🌙</div>
+          <h3>Light &amp; dark mode</h3>
+          <p>A polished interface that adapts to your preference, day or night.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔒</div>
+          <h3>Secure by design</h3>
+          <p>Your account is protected with hashed passwords and JWT-based authentication.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &copy; 2026 AquaTrack. Built as a full-stack demonstration project.
+    </footer>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/pages/landing.js"></script>
+</body>
+</html>
