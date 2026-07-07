@@ -22,7 +22,7 @@ app.set('trust proxy', 1);
 
 app.use(
   helmet({
-    contentSecurityPolicy: false, // disabled to keep the vanilla-JS frontend simple to serve
+    contentSecurityPolicy: false,
   })
 );
 
@@ -30,30 +30,39 @@ app.use(cors({ origin: process.env.CLIENT_ORIGIN || '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// --- API routes ---
+// ---------------- API Routes ----------------
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/usage', usageRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
-// --- Static frontend ---
-const FRONTEND_PUBLIC = path.join(__dirname, '..', 'frontend', 'public');
-const FRONTEND_PAGES = path.join(__dirname, '..', 'frontend', 'pages');
+// ---------------- Static Frontend ----------------
+const FRONTEND = path.join(__dirname, '..', 'frontend');
 
-app.use(express.static(FRONTEND_PUBLIC));
-app.use(express.static(FRONTEND_PAGES));
+app.use(express.static(FRONTEND));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(FRONTEND_PAGES, 'index.html'));
+  res.sendFile(path.join(FRONTEND, 'index.html'));
 });
 
-// Any unmatched non-API route falls back to the 404 page
+// Serve HTML pages directly
+app.get('/:page', (req, res, next) => {
+  if (req.params.page.startsWith('api')) return next();
+
+  const file = path.join(FRONTEND, `${req.params.page}.html`);
+
+  res.sendFile(file, (err) => {
+    if (err) next();
+  });
+});
+
+// 404 Page
 app.use((req, res, next) => {
   if (req.originalUrl.startsWith('/api')) return next();
-  res.status(404).sendFile(path.join(FRONTEND_PAGES, '404.html'));
+  res.status(404).sendFile(path.join(FRONTEND, '404.html'));
 });
 
-// --- API error handling ---
+// ---------------- API Error Handling ----------------
 app.use('/api', notFound);
 app.use(errorHandler);
 
