@@ -27,9 +27,7 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Authenticate a user and return a token
-// @route   POST /api/auth/login
-// @access  Public
+
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -51,12 +49,9 @@ const loginUser = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Logout (stateless JWT - client discards the token)
-// @route   POST /api/auth/logout
-// @access  Private
+
 const logoutUser = asyncHandler(async (req, res) => {
-  // Nothing to invalidate server-side for a stateless JWT; this endpoint
-  // exists so the client has a consistent, semantic call to make on logout.
+ 
   res.status(200).json({ success: true, message: 'Logged out' });
 });
 

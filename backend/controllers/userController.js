@@ -1,9 +1,7 @@
 const asyncHandler = require('../utils/asyncHandler');
 const User = require('../models/User');
 
-// @desc    Get the logged-in user's profile
-// @route   GET /api/users/profile
-// @access  Private
+
 const getProfile = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
@@ -19,9 +17,7 @@ const getProfile = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Update the logged-in user's name/email/goal
-// @route   PUT /api/users/profile
-// @access  Private
+
 const updateProfile = asyncHandler(async (req, res) => {
   const { name, email, dailyGoalLiters } = req.body;
 
@@ -55,9 +51,7 @@ const updateProfile = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Change the logged-in user's password
-// @route   PUT /api/users/change-password
-// @access  Private
+
 const changePassword = asyncHandler(async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 

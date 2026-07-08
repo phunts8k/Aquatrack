@@ -1,9 +1,7 @@
 const asyncHandler = require('../utils/asyncHandler');
 const WaterUsage = require('../models/WaterUsage');
 
-// @desc    Create a new water usage log entry
-// @route   POST /api/usage
-// @access  Private
+
 const createUsage = asyncHandler(async (req, res) => {
   const { liters, date, location, note } = req.body;
 
@@ -18,9 +16,6 @@ const createUsage = asyncHandler(async (req, res) => {
   res.status(201).json({ success: true, message: 'Usage logged', data: { usage } });
 });
 
-// @desc    Get the logged-in user's usage logs (search, sort, filter, paginate)
-// @route   GET /api/usage
-// @access  Private
 const getUsageLogs = asyncHandler(async (req, res) => {
   const { search, from, to, sort, page = 1, limit = 10 } = req.query;
 
@@ -71,9 +66,7 @@ const getUsageLogs = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Update a usage log entry
-// @route   PUT /api/usage/:id
-// @access  Private
+
 const updateUsage = asyncHandler(async (req, res) => {
   const usage = await WaterUsage.findOne({ _id: req.params.id, userId: req.user._id });
 
@@ -93,9 +86,7 @@ const updateUsage = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, message: 'Usage updated', data: { usage: updated } });
 });
 
-// @desc    Delete a usage log entry
-// @route   DELETE /api/usage/:id
-// @access  Private
+
 const deleteUsage = asyncHandler(async (req, res) => {
   const usage = await WaterUsage.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
 

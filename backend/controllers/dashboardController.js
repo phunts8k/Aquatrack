@@ -8,9 +8,7 @@ const startOfDay = (d) => {
   return x;
 };
 
-// @desc    Get aggregated dashboard summary for the logged-in user
-// @route   GET /api/dashboard/summary
-// @access  Private
+
 const getDashboardSummary = asyncHandler(async (req, res) => {
   const userId = req.user._id;
   const now = new Date();

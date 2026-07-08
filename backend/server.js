@@ -17,7 +17,7 @@ connectDB();
 
 const app = express();
 
-// Trust Render's proxy (fixes express-rate-limit warning)
+// Trust Render's proxy 
 app.set('trust proxy', 1);
 
 app.use(
